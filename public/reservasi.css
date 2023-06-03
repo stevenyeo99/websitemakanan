@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=Reggae+One&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  font-family: "Inter", sans-serif;
+  font-family: "Reggae One", cursive;
+  background-image: url("../asset/bg.png");
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reservation {
+  margin-top: 30px;
+}
+
+.regular {
+  width:100%;
+}
+
+.ordered {
+  background-color: rgb(85, 85, 85);
+  height: 120px;
+  font-size: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.vip {
+  background-color: black;
+  height: 120px;
+  font-size: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  color: white;
+  border-radius: 15px;
+}
+
+.birthday {
+  background-color: #00df00;
+  height: 120px;
+  font-size: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  border-radius: 15px;
+}
+
+.column {
+  gap: 18%;
+  font-family: "Inter", sans-serif;
+  font-family: "Reggae One", cursive;
+}
+
+.buttonGoto {
+  display: flex;
+  justify-content: end;
+  margin-right: 100px;
+  margin-top: 40px;
+}
+
+@media all and (max-width: 780px) {
+  .buttonGoto {
+    justify-content: center;
+    margin: 0;
+  }
+
+  .regular {
+    width: 85%;
+  }
+
+  .ordered {
+    width: 80%;
+  }
+
+  .vip {
+    width: 80%;
+  }
+
+  .birthday {
+    width: 80%;
+  }
+
+  .one {
+    width: 100%;
+  }
+}
+
+.one {
+  color: black;
+  background-color: #f4f2f2;
+  height: 120px;
+  font-size: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  width:100%;
+}

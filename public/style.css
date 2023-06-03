@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=Reggae+One&display=swap");
+
+/* IF YOU WANT TO IMPORT THIS FONT TO THE SECTION YOU CHOOSE
+font-family: 'Inter', sans-serif;
+font-family: 'Reggae One', cursive;
+*/
+
+.navigation {
+  font-family: "Inter", sans-serif;
+  font-family: "Reggae One", cursive;
+  font-size: 25px;
+  gap: 20px;
+}
+
+.jumbotron1 {
+  background-image: url("../asset/menubg.png");
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  width: 40%;
+  font-family: "Inter", sans-serif;
+  font-family: "Reggae One", cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5%;
+}
+
+.jumbotron {
+  display: flex;
+  flex-direction: row;
+}
+
+.jumbotron .reservasi {
+  width: 180px;
+  height: 50px;
+  font-size: larger;
+  border-radius: 20px;
+  border-width: 0;
+}
+
+.jumbotron2 {
+ 
+  min-height: 100vh;
+  background-image: url("../asset/bg.png");
+  width: 60%;
+  display: flex;
+  padding-top: 15%;
+  flex-direction: column;
+}
+
+.cardPacket{
+  padding-top: 10%;
+}
+
+.paket{
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+@media all and (max-width:810px){
+  .jumbotron{
+    flex-direction: column;
+  }
+
+  .jumbotron1{
+    width: 100%;
+  }
+
+  .jumbotron2{
+    width: 100%;
+  }
+
+  .paket{
+    width: 80%;
+  }
+}

@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=Reggae+One&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  font-family: "Inter", sans-serif;
+  font-family: "Reggae One", cursive;
+  margin-top: 50px;
+  margin-left: 30px;
+}
+
+.inputEmail {
+  height: 45px;
+  width: 100%;
+  padding-left: 70px;
+  border-radius: 20px;
+}
+
+.inputPassword {
+  height: 45px;
+  width: 100%;
+  padding-left: 70px;
+  border-radius: 20px;
+}
+
+.loginForm {
+  display: flex;
+  width: 45%;
+  flex-direction: column;
+  position: relative;
+  gap: 75px;
+}
+
+.assetEmail {
+  position: absolute;
+  margin-left: 10px;
+}
+
+.assetPassword {
+  position: absolute;
+  margin-left: 10px;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 7%;
+}
+
+.remember{
+    display: flex;
+}
+
+.submit{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+@media all and (max-width: 780px){
+    .loginForm{
+        width:80%;
+    }
+}

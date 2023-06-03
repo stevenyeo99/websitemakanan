@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=Reggae+One&display=swap");
+
+.header {
+  font-family: "Inter", sans-serif;
+  font-family: "Reggae One", cursive;
+}
+
+.clickHere {
+  font-family: "Inter", sans-serif;
+  font-family: "Reggae One", cursive;
+  color: #00ce00;
+}

@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=Reggae+One&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  font-family: "Inter", sans-serif;
+  font-family: "Reggae One", cursive;
+  background-image: url("../asset/bg.png");
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li{
+    font-size: 1.8vmax;
+}
+
+.step{
+    width: 80%;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}

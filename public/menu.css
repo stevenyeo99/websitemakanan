@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=Reggae+One&display=swap");
+
+.navigation {
+    font-family: "Inter", sans-serif;
+    font-family: "Reggae One", cursive;
+    font-size: 25px;
+    gap: 20px;
+  }
+
+.menuWrapper{
+    padding-top: 200px;
+}
+
+.menuCard{
+    background-color: #F4F2F2;
+    margin-bottom: 20px;
+    
+}
+
+.cardHead{
+    gap:5%;
+}
+
+@media all and (max-width:987px){
+    .menuCard{
+        width: 80%;
+    }
+}
+
