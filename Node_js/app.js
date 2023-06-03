@@ -5,20 +5,6 @@ const app = express();
 const https = require('https');
 const mysql = require('mysql');
 const path = require('path');
-const connection = mysql.createConnection({
-    host:"localhost",
-    user:"",
-    password:"",
-    database:""
-})
-
-connection.connect((err) => {
-    if (err) {
-      console.error('Error connecting to the database: ' + err.stack);
-      return;
-    }
-    console.log('Connected to the database as id ' + connection.threadId);
-  });
 
 app.use(express.static("../asset"));
 app.use(express.static('../public'));
