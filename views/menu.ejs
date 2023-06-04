@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Home Page</title>
+    <title>Bootstrap demo</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -11,7 +11,7 @@
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="./style.css" type="text/css"/>
+    <link rel="stylesheet" href="./menu.css" type="text/css"/>
   </head>
   <body>
     <!--navbar -->
@@ -63,73 +63,307 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto navigation">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="/menu">Menu</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="/login">Login</a>
-            </li>
+            <% if (!authenticated) { %>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/menu">Menu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/login">Login</a>
+              </li>
+            <% } else { %>
+              <li class="nav-item">
+                <a class="nav-link active" href="/reservasiAdmin">Reservasi</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active" href="/logout">Logout</a>
+              </li>
+            <% } %>
+            
           </ul>
         </div>
       </div>
     </nav>
     <!--navbar end-->
 
-    <!--home page jumbotron-->
-    <div class="jumbotron">
-      <div class="jumbotron1">
-        <a href = "reservasi.html">
-        <input type="button" value="Reservasi" class="reservasi" />
-      </a>
-      </div>
-      <div class="jumbotron2">
-        <div>
-          <h1 style="display: flex; justify-content: center;font-family: 'Inter', sans-serif; font-family: 'Reggae One', cursive;"">Japanese Food</h1>
+    <!--food line 1-->
+    <section class="menuWrapper">
+      <div class="container text-center">
+        <div class="row justify-content-evenly cardHead">
+          <div class="col-lg menuCard">
+            <p style="padding-top: 30px">Gyoza (餃子)</p>
+            <img
+              class="img-fluid"
+              style="padding-top: 20px"
+              src="./gyoza 1.png"
+            />
+
+            <p class="text-start" style="padding-top: 30px">
+              Gyoza (餃子) adalah sejenis pangsit 
+              yang diisi dengan daging ayam dan sayuran
+              kemudian dibungkus dengan sebuah 
+              lapisan adonan tipis.
+            </p>
+
+            <p class="text-start">Rp 30.000</p>
+          </div>
+          <div class="col-lg menuCard">
+            <p style="padding-top: 30px">Hirame Sushi (平目寿司)</p>
+            <img
+              class="img-fluid"
+              style="padding-top: 20px"
+              src="./Hirame Sushi.png"
+            />
+
+            <p class="text-start" style="padding-top: 30px">
+              Hirame sushi adalah sushi yang menggunakan  
+              ikan pipih sebagai toppingnya. Jenis ikan ini 
+              biasanya memiliki rasa yang ringan dan tekstur
+              yang kenyal dan kenyal.
+            </p>
+
+            <p class="text-start">Rp 30.000</p>
+          </div>
+          <div class="col-lg menuCard">
+            <p style="padding-top: 30px">Onsen Tamago (温泉卵)</p>
+            <img
+              class="img-fluid"
+              style="padding-top: 20px"
+              src="./onsen tamago.png"
+            />
+
+            <p class="text-start" style="padding-top: 30px">
+              Telur suhu rendah tradisional Jepang yang
+              dimasak perlahan di air panas onsen di Jepang.
+              Telur memiliki tekstur yang unik karena putihnya
+              terasa seperti custard yang lembut dan kuning
+              telurnya keras.
+            </p>
+
+            <p class="text-start">Rp 25.000</p>
+          </div>
+          <div class="col-lg menuCard">
+            <p style="padding-top: 30px">Onigiri (御握り)</p>
+            <img
+              class="img-fluid"
+              style="padding-top: 20px"
+              src="./onigiri.png"
+            />
+
+            <p class="text-start" style="padding-top: 30px">
+              Onigiri adalah nama Jepang untuk makanan berupa nasi yang dipadatkan sewaktu masih hangat sehingga berbentuk segitiga, bulat, atau seperti karung beras.
+            </p>
+
+            <p class="text-start"> Rp 20.000</p>
+          </div>
         </div>
+      </div>
+      <!--food line 1 end-->
 
-        <!--grid packet-->
-        <div class="container text-center cardPacket">
-          <div class="row justify-content-evenly">
-            <div class="col-md-3 paket">
-              <img class="img-fluid" style = "padding-top: 20px;"src="./paket1.png" />
-              <p>Paket Teman</p>
+      <!--food line 2-->
 
-              <p>Tamago Sushi <br>
-                Aburi Salmon<br>
-                Matcha 2 <br> Rp 20.000 </p>
+      <div class="container text-center">
+        <div class="row justify-content-evenly cardHead">
+          <div class="col-lg menuCard">
+            <p style="padding-top: 30px">Okonomiyaki (お好み焼き)</p>
+            <img
+              class="img-fluid"
+              style="padding-top: 20px"
+              src="./okonomiyaki.png"
+            />
 
-                
+            <p class="text-start" style="padding-top: 30px">
+              Okonomiyaki adalah Teppanyaki Jepang, hidangan panekuk gurih yang terdiri dari adonan tepung dan bahan lain yang dimasak di atas teppan.
+            </p>
+
+            <p class="text-start">Rp 30.000</p>
+          </div>
+          <div class="col-lg menuCard">
+            <p style="padding-top: 30px">Takoyaki (たこ焼き)</p>
+            <img
+              class="img-fluid"
+              style="padding-top: 20px"
+              src="./takoyaki.png"
+            />
+
+            <p class="text-start" style="padding-top: 30px">
+              Takoyaki adalah makanan asal daerah Kansai di Jepang. berbentuk bola-bola kecil dengan diameter 3–5 cm yang dibuat dari adonan tepung terigu diisi potongan gurita di dalamnya.
+            </p>
+
+            <p class="text-start">Rp 30.000</p>
+          </div>
+          <div class="col-lg menuCard">
+            <p style="padding-top: 30px">Unagi Sushi (うなぎ寿司)</p>
+            <img
+              class="img-fluid"
+              style="padding-top: 20px"
+              src="./unagi sushi.png"
+            />
+
+            <p class="text-start" style="padding-top: 30px">
+              Unagi sushi adalah sushi yang terbuat dari belut air tawar. Tidak sama dengan anago (belut air asin), unagi memiliki rasa yang kaya dan berlemak yang cocok untuk dipanggang.
+            </p>
+
+            <p class="text-start">Rp 50.000</p>
+          </div>
+          <div class="col-lg menuCard">
+            <p style="padding-top: 30px">Aburi Salmon (あぶりさもん) </p>
+            <img
+              class="img-fluid"
+              style="padding-top: 20px"
+              src="./aburi salmon.png"
+            />
+
+            <p class="text-start" style="padding-top: 30px">
+              Aburi salmon sushi adalah sushi yang menggunakan daging salmon yang dibakar dengan saus mentai diatasnya sebagai toping.
+            </p>
+
+            <p class="text-start"> Rp 60.000</p>
+          </div>
+        </div>
+      </div>
+      <!--food line 2 end-->
+
+      <!--food line 3-->
+
+      <div class="container text-center">
+        <div class="row justify-content-evenly cardHead">
+          <div class="col-lg menuCard">
+            <p style="padding-top: 30px">Akami Sushi (赤身寿司)</p>
+            <img
+              class="img-fluid"
+              style="padding-top: 20px"
+              src="./akami sushi.png"
+            />
+
+            <p class="text-start" style="padding-top: 30px">
+              Akami Sushi adalah sushi yang menggunakan bagian merah pada ikan tuna yang tidak mengandung banyak lemak sehingga dagingnya terasa lembut.
+            </p>
+
+            <p class="text-start">Rp 40.000</p>
+          </div>
+          <div class="col-lg menuCard">
+            <p style="padding-top: 30px">Edamame (えだまめ)</p>
+            <img
+              class="img-fluid"
+              style="padding-top: 20px"
+              src="./edamae.png"
+            />
+
+            <p class="text-start" style="padding-top: 30px">
+              Edamame adalah sebuah kacang kedelai muda yang masih berada dalam polong, yang ditemukan dalam masakan-masakan Asia Timur.
+            </p>
+
+            <p class="text-start">Rp 75.000</p>
+          </div>
+          <div class="col-lg menuCard">
+            <p style="padding-top: 30px">Miso Soup (御味御付)</p>
+            <img
+              class="img-fluid"
+              style="padding-top: 20px"
+              src="./miso soup.png"
+            />
+
+            <p class="text-start" style="padding-top: 30px">
+              Sup miso adalah masakan Jepang berupa sup dengan bahan dasar dashi ditambah isi sup berupa sedikit makanan laut atau sayur-sayuran, dan diberi miso sebagai perasa.
+            </p>
+
+            <p class="text-start">Rp 48.000</p>
+          </div>
+          <div class="col-lg menuCard">
+            <p style="padding-top: 30px">Tempura (天麩羅) </p>
+            <img
+              class="img-fluid"
+              style="padding-top: 20px"
+              src="./tempura.png"
+            />
+
+            <p class="text-start" style="padding-top: 30px">
+              Tempura adalah makanan Jepang berupa makanan laut yang dicelup ke dalam adonan berupa tepung terigu dan kuning telur dan digoreng dengan minyak goreng yang banyak hingga berwarna kuning muda.
+            </p>
+
+            <p class="text-start"> Rp 28.000</p>
+          </div>
+        </div>
+      </div>
+      <!--food line 3 end-->
+
+
+        <!--drink-->
+
+        <div class="container text-center" style = "margin-top: 150px;">
+          <div class="row justify-content-evenly cardHead">
+            <div class="col-lg menuCard">
+              <p style="padding-top: 30px">Ryokucha (緑茶)</p>
+              <img
+                class="img-fluid"
+                style="padding-top: 20px"
+                src="./ryokucha.png"
+              />
+  
+              <p class="text-start" style="padding-top: 30px">
+                Ryokucha adalah daun teh hijau yang di potong – potong kasar untuk kemudian diseduh menggunakan air panas dan memiliki rasa pahit yang medium.
+              </p>
+  
+              <p class="text-start">Rp 25.000</p>
             </div>
-            <div class="col-md-3 paket">
-              <img class="img-fluid" style = "padding-top: 20px;" src="./paket2.png" />
-              <p>Paket Teman</p>
-
-              <p>Tamago Sushi<br>
-                Aburi Salmon<br>
-                Matcha 2 <br> Rp 20.000 </p>
+            <div class="col-lg menuCard">
+              <p style="padding-top: 30px">Matcha (抹茶)</p>
+              <img
+                class="img-fluid"
+                style="padding-top: 20px"
+                src="./matcha.png"
+              />
+  
+              <p class="text-start" style="padding-top: 30px">
+                Teh hijau berbentuk bubuk yang dibuat dari menggiling teh hijau hingga halus seperti tepung.
+              </p>
+  
+              <p class="text-start">Rp 23.000</p>
             </div>
-            <div class="col-md-3 paket">
-              <img class="img-fluid" style = "padding-top: 20px;"src="./paket3.png" />
-              <p>Paket Teman</p>
-
-              <p>Tamago Sushi<br>
-                Aburi Salmon<br>
-                Matcha 2 <br> Rp 20.000 </p>
+            <div class="col-lg menuCard">
+              <p style="padding-top: 30px">Aojiru (青汁)</p>
+              <img
+                class="img-fluid"
+                style="padding-top: 20px"
+                src="./aojiru.png"
+              />
+  
+              <p class="text-start" style="padding-top: 30px">
+                Minuman sayuran Jepang terbuat dari rumput gandum kangkung atau muda.
+              </p>
+  
+              <p class="text-start">Rp 30.000</p>
+            </div>
+            <div class="col-lg menuCard">
+              <p style="padding-top: 30px">Genmaicha (玄米茶) </p>
+              <img
+                class="img-fluid"
+                style="padding-top: 20px"
+                src="./genmaicha.png"
+              />
+  
+              <p class="text-start" style="padding-top: 30px">
+                Teh hijau nasi merah Jepang yang terdiri dari teh hijau yang dicampur dengan nasi merah panggang.
+              </p>
+  
+              <p class="text-start"> Rp 28.000</p>
             </div>
           </div>
         </div>
-        <!--grid packet end-->
-      </div>
-    </div>
-    <!--home page jumbotron end-->
-
+        <!--drink end-->
+    </section>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
+
+
   </body>
 </html>

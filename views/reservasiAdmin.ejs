@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="./reservasi.css" type="text/css" />
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+      function reservasiMeja(tableNo) {
+        fetch('http://localhost:3000/reservasiMeja', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({tableNo: tableNo})
+        }).then(response => response.json())
+        .then(result => {
+          $('#orderContainer' + tableNo).addClass('ordered');
+          $('#orderChild' + tableNo).removeClass('one');
+          $('#tableBooked' + tableNo).val('YES');
+          dismissModalReservation();
+        })
+        .catch(error => {
+          alert('Tidak bisa reservasi meja ini saat ini, coba lagi beberapa saat.');
+        })
+      }
+
+      function resetMeja(tableNo) {
+        fetch('http://localhost:3000/resetMeja', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({tableNo: tableNo})
+        }).then(response => response.json())
+        .then(result => {
+          $('#orderContainer' + tableNo).removeClass('ordered');
+          $('#orderChild' + tableNo).addClass('one');
+          $('#tableBooked' + tableNo).val('NO');
+          dismissModalReservation();
+        })
+        .catch(error => {
+          alert('Tidak bisa reset meja ini saat ini, coba lagi beberapa saat.');
+        })
+      }
+
+      function openModalReservation(tableNo) {
+        var isBookedTable = $('#tableBooked' + tableNo).val();
+        var modalBody = $('#modal-body');
+        var reservasiAction = $('#reservasiAction');
+
+        if (isBookedTable === 'NO') {
+          modalBody.text('Apakah anda ingin update meja ini telah direservasi?');
+          reservasiAction.text('Reservasi');
+          reservasiAction.attr('onclick', 'reservasiMeja('+tableNo+')');
+        } else {
+          modalBody.text('Apakah anda ingin me-reset meja berikut?');
+          reservasiAction.text('Reset');
+          reservasiAction.attr('onclick', 'resetMeja('+tableNo+')');
+        }
+
+        $('#myModal').modal('show');
+      }
+
+      function dismissModalReservation() {
+        $('#myModal').modal('hide');
+      }
+
+      $(document).ready(function() {
+        $('#myModal').on('show.bs.modal', function(event) {
+          var button = $(event.relatedTarget); // Button that triggered the modal
+          var selectedValue = button.data('data-table-id'); // Extract value from data-selected-value attribute
+          
+          var modal = $(this);
+
+          // Update the modal content with the selected value
+          modal.find('#selectedValue').text(selectedValue);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Meja</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="dismissModalReservation()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modal-body">
+          <!-- Modal body content goes here -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="dismissModalReservation()">Close</button>
+          <button type="button" class="btn btn-primary" id="reservasiAction">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!--header reservation-->
+    <div class="header">
+      <h1>PENGATURAN RESERVASI MEJA</h1>
+    </div>
+    <!--header reservation end-->
+
+    <!--reservation-->
+    <div class="reservation">
+      <p style="padding-left: 55px">
+        Silahkan Memilih Meja yang Akan Diatur
+      </p>
+
+      <!--line 1-->
+      <div class="container text-center">
+        <div class="row justify-content-evenly column">
+          <div id="orderContainer1" class="col-md regular <%= tables[0].is_reservated === 'YES' ? 'ordered' : '' %>" onclick="openModalReservation(1)">
+            <a style="text-decoration: none; cursor: pointer;">
+              <div id="orderChild1" class="<%= tables[0].is_reservated === 'YES' ? '' : 'one' %>">1</div>
+              <input type="hidden" id="tableBooked1" value="<%= tables[0].is_reservated %>" readonly="true">
+            </a>
+          </div>
+          <div id="orderContainer2" class="col-md regular <%= tables[1].is_reservated === 'YES' ? 'ordered' : '' %>" onclick="openModalReservation(2)">
+            <a style="text-decoration: none; cursor: pointer; color: inherit;">
+              <div id="orderChild2" class="<%= tables[1].is_reservated === 'YES' ? '' : 'one' %>">2</div>
+              <input type="hidden" id="tableBooked2" value="<%= tables[1].is_reservated %>" readonly="true">
+            </a>
+          </div>
+          <div id="orderContainer3" class="col-md regular <%= tables[2].is_reservated === 'YES' ? 'ordered' : '' %>" onclick="openModalReservation(3)">
+            <a style="text-decoration: none; cursor: pointer;">
+              <div id="orderChild3" class="<%= tables[2].is_reservated === 'YES' ? '' : 'one' %>">3</div>
+              <input type="hidden" id="tableBooked3" value="<%= tables[2].is_reservated %>" readonly="true">
+            </a>
+          </div>
+          <div id="orderContainer4" class="col-md regular <%= tables[3].is_reservated === 'YES' ? 'ordered' : '' %>" onclick="openModalReservation(4)">
+            <a style="text-decoration: none; cursor: pointer;">
+              <div id="orderChild4" class="<%= tables[3].is_reservated === 'YES' ? '' : 'one' %>">4</div>
+              <input type="hidden" id="tableBooked4" value="<%= tables[3].is_reservated %>" readonly="true">  
+            </a>
+          </div>
+        </div>
+      </div>
+      <!--line 1 end-->
+
+      <!--line 2-->
+      <div class="container text-center">
+        <div class="row justify-content-evenly column">
+          <div class="col-md regular">
+            <a data-toggle="modal" data-target="#myModal" style="text-decoration: none; cursor: pointer;">
+              <div class="one">5</div></a
+            >
+          </div>
+          <div class="col-md regular">
+            <a data-toggle="modal" data-target="#myModal" style="text-decoration: none; cursor: pointer;">
+              <div class="one">6</div></a
+            >
+          </div>
+          <div class="col-md regular">
+            <a data-toggle="modal" data-target="#myModal" style="text-decoration: none; cursor: pointer;">
+              <div class="one">7</div></a
+            >
+          </div>
+          <div class="col-md regular">
+            <a data-toggle="modal" data-target="#myModal" style="text-decoration: none; cursor: pointer;">
+              <div class="one">8</div></a
+            >
+          </div>
+        </div>
+      </div>
+      <!--line 2 end-->
+
+      <!--line 3-->
+      <div class="container text-center">
+        <div class="row justify-content-evenly column">
+          <div class="col-md regular">
+            <a data-toggle="modal" data-target="#myModal" style="text-decoration: none; cursor: pointer;">
+              <div class="one">9</div></a
+            >
+          </div>
+          <div class="col-md vip">10</div>
+          <div class="col-md vip">11</div>
+          <div class="col-md birthday">12</div>
+        </div>
+      </div>
+      <!--line 3 end-->
+      <div class="buttonGoto">
+        <div>
+          <a href="/menu">
+            <input
+              type="button"
+              value="Kembali"
+              style="
+                border-width: 0;
+                width: 170px;
+                height: 40px;
+                border-radius: 15px;
+                margin-left: 10px;
+              "
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+    <!--reservation end-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
