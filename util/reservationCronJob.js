@@ -17,6 +17,10 @@ const updateTableStatus = () => {
                 const futureDate = new Date(table.reserved_datetime);
                 futureDate.setHours(futureDate.getHours() + Number(resetHours));
 
+                if (futureDate.getHours() < Number(resetHours)) {
+                    futureDate.setUTCDate(futureDate.getUTCDate() + 1);
+                }
+
                 const currentTime = new Date();
 
                 let updatedReserveDate = new Date(table.reserved_datetime);
